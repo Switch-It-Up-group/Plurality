@@ -76,8 +76,10 @@ dropdownalters = {f"{dat["name"]}": uid for uid, dat in members.items()}
 frontsel = Core.MultiSelect(optionsframe, dropdownalters, title="Select front")
 frontsel.grid(column=0, row=1)
 
-def update_front(fronters):
+def update_front(fronters, webhook=True):
     RP.update(fronters)
+    kr_data["front"] = fronters
+    keyring.set_password(krnamespace, krsname, json.dumps(kr_data))
     strfront = ""
     for front in fronters:
         strfront += f"{front} "
@@ -87,7 +89,12 @@ def update_front(fronters):
         "message": strfront.rstrip(" "),
         "type": 1
     }
-    WH.post(dat)
+    if webhook:
+        WH.post(dat)
+
+if "front" in kr_data:
+    frontsel.set_selected(kr_data["front"])
+    update_front(kr_data["front"], webhook=False)
 
 def change_webhooks():
     new = []
@@ -129,6 +136,26 @@ tk.Button(optionsframe, text="Create member", command=lambda: make_alter()).grid
 
 memberframe.grid(column=0,row=0, sticky="nsew")
 optionsframe.grid(column=1, row=0, padx=5, sticky="nsew")
+
+menubar = tk.Menu()
+
+filemenu = tk.Menu(menubar, tearoff=False)
+editmenu = tk.Menu(menubar, tearoff=False)
+
+editmenu.add_command(label="Select front (1st)", command=lambda: frontsel.open_popup())
+editmenu.add_command(label="Update front (2nd)", command=lambda: update_front(frontsel.get_selected_keys()))
+editmenu.add_command(label="Update webhooks", command=lambda: change_webhooks())
+editmenu.add_command(label="Refresh members", command=lambda: refresh_members())
+editmenu.add_command(label="Create Member", command=lambda: make_alter())
+
+filemenu.add_separator()
+filemenu.add_command(label="Exit", command=lambda: root.destroy())
+
+menubar.add_cascade(label="File", menu=filemenu)
+menubar.add_cascade(label="Edit", menu=editmenu)
+
+root.config(menu=menubar)
+
 root.mainloop()
 
 
