@@ -1,7 +1,7 @@
 from pathlib import Path
 import yaml,json,struct
 from PIL import Image
-import PIL
+import PIL, uuid
 
 
 pimgmagic = b"PLURALITYIMG"
