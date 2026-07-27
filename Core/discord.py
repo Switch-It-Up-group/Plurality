@@ -1,4 +1,5 @@
 from pypresence import Presence
+from tkinter import messagebox
 
 CLIENT_ID = "1530665857456410654"
 
@@ -19,6 +20,7 @@ class RichPresence:
             self.rpc_works = False
             print("You had an error:", error)
             print("Rich presence will not work. make sure you have a webhook setup for updates. else everything stays here.")
+            messagebox.showerror("Plurality has an error", f"Plurality's Discord RPC had an error! {error}. plurality will still work. we hope")
         self.start = start
         self.fronters = ["Al", "DJ", "Dogday"]
 
