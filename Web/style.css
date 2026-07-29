@@ -101,3 +101,43 @@ body {
         background: linear-gradient(to bottom, #202020, #4600b770);
     }
 }
+
+@media (min-width: 601px) and (max-width: 1400px) {
+    .members {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .member {
+        border-color: #FFFFFF;
+        border-radius: 20px;
+        border-style: solid;
+
+        padding: 10px;
+        margin: 10px;
+ 
+        width: 80%;
+        color: white;
+        background: linear-gradient(to bottom, #202020, #4600b770);
+    }
+}
+
+@media (min-width: 1900px) {
+    .members {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .member {
+        border-color: #FFFFFF;
+        border-radius: 20px;
+        border-style: solid;
+
+        padding: 10px;
+        margin: 10px;
+ 
+        width: 90%;
+        color: white;
+        background: linear-gradient(to bottom, #202020, #4600b770);
+    }
+}
