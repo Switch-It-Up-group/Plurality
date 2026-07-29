@@ -9,11 +9,13 @@ function build(jsonfile) {
         const memdat = jsonfile[uid];
         const memname = document.createElement("h3");
         const mempro = document.createElement("h5");
+        const memdesc = document.createElement("p");
 
         memberdiv.id = uid + "-div";
 
         memname.textContent = memdat["name"];
         mempro.textContent = memdat["pronouns"]
+        memdesc.textContent = memdat["description"]
 
         if ("metadata" in memdat) {
             if ("color" in memdat["metadata"]) {
@@ -25,7 +27,13 @@ function build(jsonfile) {
         memberdiv.className = "member";
 
         memberdiv.appendChild(memname);
-        memberdiv.appendChild(mempro);
+        if (memdat["pronouns"] != "") {
+            memberdiv.appendChild(mempro);
+        }
+        
+        if (memdat["description"] != "") {
+            memberdiv.appendChild(memdesc);
+        }
 
 
         membersdiv.appendChild(memberdiv);

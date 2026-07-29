@@ -39,7 +39,7 @@ body {
 
 
 .member {
-    border-color: #202020;
+    border-color: #FFFFFF;
     border-style: solid;
     border-radius: 20px;
 
@@ -68,6 +68,17 @@ body {
     background-color: #202020;
 }
 
+.member p {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #822300;
+
+    padding: 10px;
+    width: fit-content;
+
+    background-color: #202020;
+}
+
 
 
 
@@ -78,7 +89,7 @@ body {
     }
 
     .member {
-        border-color: #202020;
+        border-color: #FFFFFF;
         border-radius: 20px;
         border-style: solid;
 
