@@ -36,6 +36,8 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
+
+
 .member {
     border-color: #202020;
     border-style: solid;
@@ -49,6 +51,9 @@ body {
     background: linear-gradient(to bottom, #202020, #4600b770);
     color: white;
 
+
+    
+
     
 }
 
@@ -61,4 +66,27 @@ body {
     width: fit-content;
 
     background-color: #202020;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .members {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .member {
+        border-color: #202020;
+        border-radius: 20px;
+        border-style: solid;
+
+        padding: 10px;
+        margin: 10px;
+ 
+        width: 80%;
+        color: white;
+        background: linear-gradient(to bottom, #202020, #4600b770);
+    }
 }
