@@ -1,0 +1,62 @@
+name: Deploy Folder to GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: Folder to deploy
+        required: true
+        default: website
+        type: string
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate selected folder
+        shell: bash
+        run: |
+          FOLDER="${{ inputs.folder }}"
+
+          if [[ "$FOLDER" == /* || "$FOLDER" == *".."* ]]; then
+            echo "::error::Invalid folder path: $FOLDER"
+            exit 1
+          fi
+
+          if [[ ! -d "$FOLDER" ]]; then
+            echo "::error::Folder does not exist: $FOLDER"
+            exit 1
+          fi
+
+          if [[ ! -f "$FOLDER/index.html" ]]; then
+            echo "::warning::$FOLDER does not contain an index.html file"
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload selected folder
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ inputs.folder }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
