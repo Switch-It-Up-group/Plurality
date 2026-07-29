@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(46, 45, 45);
+    background: linear-gradient(to bottom, rgb(41, 24, 24), rgb(31, 21, 43));
 }
 
 #open {
@@ -17,7 +17,18 @@ body {
     padding: 10px;
     margin: 3px;
     border-radius: 15px;
-    background-color: rgb(70, 70, 70);
+    background-color: rgb(40, 40, 40);
+
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    text-align: center;
+
+    color: white;
+}
+
+.navbar input {
+    height: 20px;
 }
 
 .members {
@@ -26,16 +37,16 @@ body {
 }
 
 .member {
-    border-color: rgb(116, 255, 197);
+    border-color: #202020;
     border-style: solid;
     border-radius: 20px;
 
     margin: 10px;
     padding: 10px;
 
-    width: 80%;
+    width: 90%;
 
-    background-color: rgb(55, 55, 55);
+    background: linear-gradient(to bottom, #202020, #4600b770);
     color: white;
 
     
@@ -44,8 +55,10 @@ body {
 .member h5 {
     border-style: solid;
     border-radius: 50px;
-    border-color: #00b6de;
+    border-color: #006a82;
 
     padding: 10px;
     width: fit-content;
+
+    background-color: #202020;
 }

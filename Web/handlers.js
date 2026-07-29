@@ -15,6 +15,12 @@ function build(jsonfile) {
         memname.textContent = memdat["name"];
         mempro.textContent = memdat["pronouns"]
 
+        if ("metadata" in memdat) {
+            if ("color" in memdat["metadata"]) {
+                memberdiv.style = 'background: linear-gradient(to bottom, #202020, ' + memdat["metadata"]["color"] + '70);'
+            };
+        };
+
 
         memberdiv.className = "member";
 
