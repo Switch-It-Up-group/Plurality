@@ -2,6 +2,7 @@ from pypresence import Presence
 from tkinter import messagebox
 import requests as web
 import Core.helpers as help
+import time
 
 
 CLIENT_ID = "1530665857456410654"
@@ -25,7 +26,8 @@ class RichPresence:
         self.start = start
         self.fronters = ["Fallback1", "Fallback2", "Fallback3"]
 
-    def update(self, fronters:list):
+    def update(self, fronters:list, updatetime = time.time()):
+        self.start = updatetime
         self.fronters = fronters
         buff = ""
         buffer = ""
@@ -38,7 +40,7 @@ class RichPresence:
                     buffer += f"{fronter}, "
         if self.rpc_works:
             self.rpc.update(
-                start=self.start,
+                start=int(self.start),
                 state=buff,
                 details=buffer
             )

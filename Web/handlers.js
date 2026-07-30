@@ -1,5 +1,7 @@
 const open_btn = document.getElementById("open");
 const membersdiv = document.getElementById("members");
+const create_member_btn = document.getElementById("create_member");
+const export_btn = document.getElementById("export");
 
 function build(jsonfile) {
     membersdiv.replaceChildren();
@@ -42,7 +44,27 @@ function build(jsonfile) {
 
 };
 
+function downloadJSON(data, filename = "members.json") {
+    const jsonText = JSON.stringify(data, null, 4);
 
+    const blob = new Blob([jsonText], {
+        type: "application/json"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+}
+
+build(JSON.parse(localStorage.getItem("members") ?? "{}"))
 
 open_btn.addEventListener("change", async function () {
     const file = open_btn.files[0];
@@ -50,4 +72,30 @@ open_btn.addEventListener("change", async function () {
     const jsondat = JSON.parse(jdata);
     console.log(file.text());
     build(jsondat);
+    localStorage.setItem("members", jdata)
+});
+
+
+create_member_btn.addEventListener("click", function () {
+    const createMemberWindow = window.open(
+        "createmember.html",
+        "createMember",
+        "width=500,height=600"
+    );
+
+    const closeCheck = setInterval(function () {
+        if (createMemberWindow.closed) {
+            clearInterval(closeCheck);
+
+            const members = JSON.parse(
+                localStorage.getItem("members") ?? "{}"
+            );
+
+            build(members);
+        }
+    }, 250);
+});
+
+export_btn.addEventListener("click", function () {
+    downloadJSON(JSON.parse(localStorage.getItem("members") ?? "{}"), "members.json");
 });

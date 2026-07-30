@@ -28,7 +28,8 @@ body {
 }
 
 .navbar input {
-    height: 20px;
+    height: fit-content;
+    width: fit-content;
 }
 
 .members {
@@ -80,6 +81,30 @@ body {
 }
 
 
+.btn {
+    background-color: #202020;
+    border-style: solid;
+    border-color: wheat;
+    border-width: 2px;
+    border-radius: 12px;
+
+    color: white;
+
+    height: fit-content;
+    width: fit-content;
+}
+
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form {
+    color: white;
+}
 
 
 @media (max-width: 600px) {

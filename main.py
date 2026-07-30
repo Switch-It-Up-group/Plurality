@@ -7,7 +7,7 @@ from tkinter import simpledialog
 membersfile = Core.MembersFile()
 members = membersfile.get_data()
 
-RP = Core.RichPresence(time.time())
+starttime = time.time()
 
 krnamespace = "siu-service_ring"
 krsname = "Plurality"
@@ -47,7 +47,10 @@ else:
 WH = Core.WebhookConnector(kr_data["webhooks"], kr_data["sys_name"])
 print(kr_data)
 
+if "utime" in kr_data:
+    starttime = kr_data["utime"]
 
+RP = Core.RichPresence(starttime)
 
 
 root = tk.Tk()
@@ -57,7 +60,7 @@ memberframe = tk.Frame(root)
 optionsframe = tk.Frame(root)
 
 def build_members():
-    for num, chunk in enumerate(itertools.batched(members.items(), 4)):
+    for num, chunk in enumerate(itertools.batched(members.items(), 5)):
         for i, (member, dat) in enumerate(chunk):
             if not "archived" in dat:
                 dat["archived"] = False
@@ -77,8 +80,11 @@ frontsel = Core.MultiSelect(optionsframe, dropdownalters, title="Select front")
 frontsel.grid(column=0, row=1)
 
 def update_front(fronters, webhook=True):
+    global starttime
+    starttime = time.time()
     RP.update(fronters)
     kr_data["front"] = fronters
+    kr_data["utime"] = starttime
     keyring.set_password(krnamespace, krsname, json.dumps(kr_data))
     strfront = ""
     for front in fronters:
