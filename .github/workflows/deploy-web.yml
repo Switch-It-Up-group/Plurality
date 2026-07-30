@@ -6,7 +6,7 @@ on:
       folder:
         description: Folder to deploy
         required: true
-        default: website
+        default: Web
         type: string
 
 permissions:
