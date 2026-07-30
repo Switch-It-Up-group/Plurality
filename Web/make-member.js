@@ -26,6 +26,11 @@ form.addEventListener("submit", function (event) {
         archived: false
     };
     localStorage.setItem("members", JSON.stringify(oldmembers));
-    window.close();
+
+    if (window.opener) {
+        window.close();
+    } else {
+        window.location.href = "index.html";
+    }
 
 });

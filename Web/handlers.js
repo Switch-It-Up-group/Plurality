@@ -77,21 +77,31 @@ open_btn.addEventListener("change", async function () {
 
 
 create_member_btn.addEventListener("click", function () {
+    const isMobile = window.matchMedia("(max-width: 600px)").matches;
+
+    if (isMobile) {
+        window.location.href = "createmember.html";
+        return;
+    }
+
     const createMemberWindow = window.open(
         "createmember.html",
         "createMember",
         "width=500,height=600"
     );
 
+    if (!createMemberWindow) {
+        window.location.href = "createmember.html";
+        return;
+    }
+
     const closeCheck = setInterval(function () {
         if (createMemberWindow.closed) {
             clearInterval(closeCheck);
 
-            const members = JSON.parse(
-                localStorage.getItem("members") ?? "{}"
+            build(
+                JSON.parse(localStorage.getItem("members") ?? "{}")
             );
-
-            build(members);
         }
     }, 250);
 });
