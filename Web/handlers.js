@@ -12,12 +12,14 @@ function build(jsonfile) {
         const memname = document.createElement("h3");
         const mempro = document.createElement("h5");
         const memdesc = document.createElement("p");
+        const rm_member_btn = document.createElement("button");
 
         memberdiv.id = uid + "-div";
 
         memname.textContent = memdat["name"];
         mempro.textContent = memdat["pronouns"]
         memdesc.textContent = memdat["description"]
+        rm_member_btn.textContent = "Remove member"
 
         if ("metadata" in memdat) {
             if ("color" in memdat["metadata"]) {
@@ -31,11 +33,21 @@ function build(jsonfile) {
         memberdiv.appendChild(memname);
         if (memdat["pronouns"] != "") {
             memberdiv.appendChild(mempro);
-        }
+        };
         
         if (memdat["description"] != "") {
             memberdiv.appendChild(memdesc);
-        }
+        };
+
+        rm_member_btn.id = uid + "-rm_m_btn"
+
+        rm_member_btn.addEventListener("click", function () {
+            delete jsonfile[uid];
+            localStorage.setItem("members", JSON.stringify(jsonfile));
+            build(jsonfile);
+        });
+
+        memberdiv.appendChild(rm_member_btn);
 
 
         membersdiv.appendChild(memberdiv);
