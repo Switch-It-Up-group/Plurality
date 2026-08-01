@@ -1,5 +1,19 @@
 const form = document.getElementById("member-form");
 const params = new URLSearchParams(window.location.search);
+const return_btn = document.getElementById("return");
+
+
+return_btn.addEventListener("click", function () {
+    if (window.opener) {
+        window.close();
+    } else {
+        history.back();
+    }
+});
+
+
+
+
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();

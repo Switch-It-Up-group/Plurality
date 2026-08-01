@@ -6,7 +6,8 @@ const export_btn = document.getElementById("export");
 function build(jsonfile) {
     membersdiv.replaceChildren();
     for (const uid in jsonfile) {
-        const memberdiv = document.createElement("div")
+        const memberdiv = document.createElement("div");
+        const actionsdiv = document.createElement("div");
         
         const memdat = jsonfile[uid];
         const memname = document.createElement("h3");
@@ -40,6 +41,7 @@ function build(jsonfile) {
         };
 
         rm_member_btn.id = uid + "-rm_m_btn"
+        actionsdiv.className = "action"
 
         rm_member_btn.addEventListener("click", function () {
             delete jsonfile[uid];
@@ -47,7 +49,11 @@ function build(jsonfile) {
             build(jsonfile);
         });
 
-        memberdiv.appendChild(rm_member_btn);
+
+        actionsdiv.appendChild(rm_member_btn);
+
+
+        memberdiv.appendChild(actionsdiv);
 
 
         membersdiv.appendChild(memberdiv);

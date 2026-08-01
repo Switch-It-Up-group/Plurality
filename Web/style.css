@@ -76,3 +76,10 @@ body {
     text-align: center;
     align-items: center;
 }
+
+.action {
+   position: sticky;
+  top: 0;     
+  width: max-content; 
+  margin-left: auto;
+}
