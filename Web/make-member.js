@@ -30,7 +30,7 @@ form.addEventListener("submit", function (event) {
     if (window.opener) {
         window.close();
     } else {
-        window.location.href = "index.html";
+        window.location.href = "/";
     }
 
 });

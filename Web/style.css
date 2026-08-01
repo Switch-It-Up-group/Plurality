@@ -1,22 +1,17 @@
 body {
-    background: linear-gradient(to bottom, rgb(41, 24, 24), rgb(31, 21, 43));
+    background: linear-gradient(to bottom, #252025, #202020);
 }
 
 #open {
-    border-radius: 15px;
     background-color: #00b6de;
     color: black;
-
 }
 
 .navbar {
     border-color: black;
-    border-style: solid;
-    border-radius: 15px;
+    border-bottom: solid;
     border-width: 2px;
-    padding: 10px;
-    margin: 3px;
-    border-radius: 15px;
+    border-bottom-color: #404040;
     background-color: rgb(40, 40, 40);
 
     display: flex;
@@ -25,144 +20,48 @@ body {
     text-align: center;
 
     color: white;
+
 }
 
 .navbar input {
     height: fit-content;
-    width: fit-content;
+    width: 87px;
 }
 
-.members {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 }
-
 
 
 .member {
-    border-color: #FFFFFF;
-    border-style: solid;
-    border-radius: 20px;
-
-    margin: 10px;
-    padding: 10px;
-
-    width: 90%;
-
-    background: linear-gradient(to bottom, #202020, #4600b770);
     color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
 
-    
+    gap: 10px;
 
-    
+    background: linear-gradient(to left, #202020, #6400de50);
 }
 
 .member h5 {
     border-style: solid;
-    border-radius: 50px;
-    border-color: #006a82;
-
-    padding: 10px;
-    width: fit-content;
-
-    background-color: #202020;
+    padding: 5px;
+    border-radius: 15px;
 }
 
 .member p {
     border-style: solid;
-    border-radius: 10px;
-    border-color: #822300;
-
-    padding: 10px;
-    width: fit-content;
-
-    background-color: #202020;
-}
-
-
-.btn {
-    background-color: #202020;
-    border-style: solid;
-    border-color: wheat;
-    border-width: 2px;
-    border-radius: 12px;
-
-    color: white;
-
-    height: fit-content;
-    width: fit-content;
-}
-
-
-.nav-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.form {
-    color: white;
-}
-
-
-@media (max-width: 600px) {
-    .members {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .member {
-        border-color: #FFFFFF;
-        border-radius: 20px;
-        border-style: solid;
-
-        padding: 10px;
-        margin: 10px;
- 
-        width: 80%;
-        color: white;
-        background: linear-gradient(to bottom, #202020, #4600b770);
-    }
-}
-
-@media (min-width: 601px) and (max-width: 1400px) {
-    .members {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .member {
-        border-color: #FFFFFF;
-        border-radius: 20px;
-        border-style: solid;
-
-        padding: 10px;
-        margin: 10px;
- 
-        width: 80%;
-        color: white;
-        background: linear-gradient(to bottom, #202020, #4600b770);
-    }
-}
-
-@media (min-width: 1900px) {
-    .members {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-    .member {
-        border-color: #FFFFFF;
-        border-radius: 20px;
-        border-style: solid;
-
-        padding: 10px;
-        margin: 10px;
- 
-        width: 90%;
-        color: white;
-        background: linear-gradient(to bottom, #202020, #4600b770);
-    }
+    border-radius: 5px;
+    padding: 5px;
 }

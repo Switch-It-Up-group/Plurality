@@ -21,7 +21,7 @@ function build(jsonfile) {
 
         if ("metadata" in memdat) {
             if ("color" in memdat["metadata"]) {
-                memberdiv.style = 'background: linear-gradient(to bottom, #202020, ' + memdat["metadata"]["color"] + '70);'
+                memberdiv.style = 'background: linear-gradient(to left, #202020, ' + memdat["metadata"]["color"] + '50);'
             };
         };
 
