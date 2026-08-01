@@ -15,7 +15,7 @@ form.addEventListener("submit", function (event) {
     localStorage.setItem("newMember", JSON.stringify(member));
 
 
-    const oldmembers = JSON.parse(localStorage.getItem("members"));
+    const oldmembers = JSON.parse(localStorage.getItem("members") ?? {});
     oldmembers[crypto.randomUUID()] = {
         name: formData.get("name"),
         pronouns: formData.get("pronouns"),
@@ -30,7 +30,7 @@ form.addEventListener("submit", function (event) {
     if (window.opener) {
         window.close();
     } else {
-        window.location.href = "/";
+        history.back();
     }
 
 });
