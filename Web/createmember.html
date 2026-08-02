@@ -1,39 +1,75 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Make-a-member</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Build-A-Member</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="navbar" id="navbar">
+    <div class="navbar">
         <h1>Build-A-Member</h1>
     </div>
-    <div class="form" id="form">
-            <form id="member-form">
-        <label>
-            Name
-            <input type="text" name="name" required>
-        </label>
 
-        <label>
-            Pronouns
-            <input type="text" name="pronouns">
-        </label>
+    <div class="form">
+        <p id="member-message"></p>
 
-        <label>
-            Description
-            <input type="text" name="description">
-        </label>
+        <form id="member-form">
+            <label>
+                Name
 
-        <label>
-            Color
-            <input type="color" name="color" value="#af0000">
-        </label>
+                <input
+                    type="text"
+                    name="name"
+                    required
+                >
+            </label>
 
-        <button type="submit">Create Member</button>
-    </form>
-    <button id="return">Go back (cancel)</button>
+            <label>
+                Pronouns
+
+                <input
+                    type="text"
+                    name="pronouns"
+                >
+            </label>
+
+            <label>
+                Description
+
+                <textarea
+                    name="description"
+                    rows="5"
+                ></textarea>
+            </label>
+
+            <label>
+                Color
+
+                <input
+                    type="color"
+                    name="color"
+                    value="#af0000"
+                >
+            </label>
+
+            <button type="submit">
+                Create Member
+            </button>
+        </form>
+
+        <button id="return" type="button">
+            Go back (cancel)
+        </button>
     </div>
+
+    <script type="module" src="make-member.js"></script>
 </body>
-<script src="make-member.js"></script>
 </html>

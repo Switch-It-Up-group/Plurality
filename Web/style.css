@@ -1,85 +1,267 @@
-body {
-    background: linear-gradient(to bottom, #252025, #202020);
+* {
+    box-sizing: border-box;
 }
 
-#open {
-    background-color: #00b6de;
-    color: black;
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #252025,
+            #202020
+        );
+
+    color: white;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 .navbar {
-    border-color: black;
-    border-bottom: solid;
-    border-width: 2px;
-    border-bottom-color: #404040;
+    min-height: 64px;
+
+    padding: 10px 16px;
+
+    border-bottom: 2px solid #404040;
+
     background-color: rgb(40, 40, 40);
 
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 25px;
-    text-align: center;
-
-    color: white;
-
 }
 
-.navbar input {
-    height: fit-content;
-    width: 87px;
+.navbar h1,
+.navbar h4 {
+    margin: 0;
 }
 
 .nav-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
 }
 
+.toolbar {
+    padding: 12px;
 
-.member {
-    color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 10px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
-    border-style: solid;
-    border-radius: 10px;
-    border-color: black;
+.file-button {
+    padding: 6px 10px;
 
+    border: 1px solid #808080;
+    border-radius: 4px;
+
+    background-color: #00b6de;
+    color: black;
+
+    cursor: pointer;
+}
+
+.file-button input {
+    display: none;
+}
+
+.members {
+    padding: 0 10px 10px;
+}
+
+.member {
+    color: white;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
 
-    background: linear-gradient(to left, #202020, #6400de50);
+    padding: 10px;
+    margin: 4px 0;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to left,
+            #202020,
+            #6400de50
+        );
+}
+
+.member h3,
+.member h5,
+.member p {
+    margin: 0;
 }
 
 .member h5 {
-    border-style: solid;
     padding: 5px;
+
+    border: 1px solid #ffffff70;
     border-radius: 15px;
-    border-color: #ffffff70;
 }
 
 .member p {
-    border-style: solid;
-    border-radius: 10px;
     padding: 5px;
-    border-color: #ffffff70;
-}
 
-.form {
-    color: white;
-    display: flex;
-    flex-direction: column;
-
-    text-align: center;
-    align-items: center;
+    border: 1px solid #ffffff70;
+    border-radius: 10px;
 }
 
 .action {
-   position: sticky;
-  top: 0;     
-  width: max-content; 
-  margin-left: auto;
+    width: max-content;
+    margin-left: auto;
+}
+
+.form,
+.auth-panel {
+    width: min(500px, calc(100% - 24px));
+    margin: 24px auto;
+    padding: 20px;
+
+    border: 1px solid #505050;
+    border-radius: 12px;
+
+    background-color: #292929;
+}
+
+.form form,
+.auth-panel form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form label,
+.auth-panel label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    text-align: left;
+}
+
+.form input,
+.form textarea,
+.auth-panel input {
+    width: 100%;
+    padding: 9px;
+
+    border: 1px solid #606060;
+    border-radius: 5px;
+
+    background-color: #181818;
+    color: white;
+}
+
+.form button,
+.auth-panel button,
+.toolbar button,
+.navbar button,
+.action button {
+    padding: 7px 11px;
+}
+
+.form > button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.auth-buttons button {
+    flex: 1;
+}
+
+#auth-message,
+#member-message {
+    min-height: 1.2em;
+}
+
+.error {
+    color: #ff7979;
+}
+
+.empty-message {
+    color: #bcbcbc;
+    text-align: center;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .nav-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .toolbar {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .toolbar button,
+    .file-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .member {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .action {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .action button {
+        width: 100%;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+    }
 }
