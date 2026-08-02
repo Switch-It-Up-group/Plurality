@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Build-A-Member</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Build-A-Member</h1>
+    </div>
+
+    <div class="form">
+        <p id="member-message"></p>
+
+        <form id="member-form">
+            <label>
+                Name
+
+                <input
+                    type="text"
+                    name="name"
+                    required
+                >
+            </label>
+
+            <label>
+                Pronouns
+
+                <input
+                    type="text"
+                    name="pronouns"
+                >
+            </label>
+
+            <label>
+                Description
+
+                <textarea
+                    name="description"
+                    rows="5"
+                ></textarea>
+            </label>
+
+            <label>
+                Color
+
+                <input
+                    type="color"
+                    name="color"
+                    value="#af0000"
+                >
+            </label>
+
+            <button type="submit">
+                Create Member
+            </button>
+        </form>
+
+        <button id="return" type="button">
+            Go back (cancel)
+        </button>
+    </div>
+
+    <script type="module" src="make-member.js"></script>
+</body>
+</html>

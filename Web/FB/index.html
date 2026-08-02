@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Plurality Web</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h4>Plurality Web</h4>
+
+        <div class="nav-buttons">
+            <span id="account-status">Not signed in</span>
+
+            <button id="sign-out" type="button" hidden>
+                Sign out
+            </button>
+        </div>
+    </div>
+
+    <div id="auth-panel" class="auth-panel">
+        <h2>Sign in</h2>
+
+        <form id="auth-form">
+            <label>
+                Email
+                <input
+                    id="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                >
+            </label>
+
+            <label>
+                Password
+                <input
+                    id="password"
+                    type="password"
+                    autocomplete="current-password"
+                    minlength="6"
+                    required
+                >
+            </label>
+
+            <div class="auth-buttons">
+                <button id="sign-in" type="submit">
+                    Sign in
+                </button>
+
+                <button id="create-account" type="button">
+                    Create account
+                </button>
+            </div>
+
+            <p id="auth-message"></p>
+        </form>
+    </div>
+
+    <main id="app" hidden>
+        <div class="toolbar">
+            <label class="file-button">
+                Import members
+                <input
+                    id="open"
+                    type="file"
+                    accept=".json,application/json"
+                >
+            </label>
+
+            <button id="create_member" type="button">
+                Create Member
+            </button>
+
+            <button id="export" type="button">
+                Export members
+            </button>
+        </div>
+
+        <div id="members" class="members"></div>
+    </main>
+
+    <script type="module" src="handlers.js"></script>
+</body>
+</html>
